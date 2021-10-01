@@ -5,8 +5,14 @@ const useStyles = makeStyles({
     backgroundColor: 'red',
     '& a': {
       color: '#fff',
-      marginLeft: 10,
+      marginLeft: 0,
     },
+  },
+  logo: {
+    fontSize: 24,
+  },
+  grow: {
+    flexGrow: 1,
   },
   main: {
     minHeight: '80vh',
