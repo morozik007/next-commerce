@@ -15,6 +15,8 @@ const useStyles = makeStyles({
     textAlign: 'center',
     borderTop: 'solid 1px red',
     paddingTop: 25,
+    paddingBottom: 25,
+    marginTop: 30,
   },
 });
 
