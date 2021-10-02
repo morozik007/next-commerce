@@ -1,15 +1,21 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   navbar: {
     backgroundColor: 'red',
     '& a': {
       color: '#fff',
-      marginLeft: 0,
+      marginLeft: 10,
+      textDecoration: 'underline',
+      '&:first-child': {
+        marginLeft: 0,
+        textDecoration: 'none',
+      },
     },
   },
   logo: {
     fontSize: 24,
+    color: '#fff',
   },
   grow: {
     flexGrow: 1,

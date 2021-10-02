@@ -8,7 +8,7 @@ import {
   CardMedia,
   Grid,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import data from '../utils/data';
 
 export default function Home() {

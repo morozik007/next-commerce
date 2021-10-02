@@ -7,7 +7,9 @@ import {
   Link,
   Toolbar,
   Typography,
-} from '@material-ui/core';
+  Button,
+} from '@mui/material';
+
 import useStyles from '../utils/styles';
 
 function Layout({ children }) {
