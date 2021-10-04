@@ -30,6 +30,10 @@ const useStyles = makeStyles({
     paddingBottom: 25,
     marginTop: 30,
   },
+  section: {
+    marginTop: 10,
+    marginBottom: 10,
+  },
 });
 
 export default useStyles;

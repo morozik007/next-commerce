@@ -7,18 +7,18 @@ import {
   Link,
   Toolbar,
   Typography,
-  Button,
-} from '@mui/material';
+} from '@material-ui/core';
 
 import useStyles from '../utils/styles';
 
-function Layout({ children }) {
+function Layout({ title, description, children }) {
   const classes = useStyles();
 
   return (
     <div>
       <Head>
-        <title>Next Commerce</title>
+        <title>{title ? `${title} - Next Commerce` : 'Next Commerce'}</title>
+        {description && <meta name="description" content={description}></meta>}
       </Head>
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>
@@ -32,7 +32,7 @@ function Layout({ children }) {
             <Link>Cart</Link>
           </NextLink>
           <NextLink href="/login" passHref>
-            <Link ml={10}>Login</Link>
+            <Link>Login</Link>
           </NextLink>
         </Toolbar>
       </AppBar>
