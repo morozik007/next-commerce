@@ -7,14 +7,11 @@ import data from '../../utils/data';
 import useStyles from '../../utils/styles';
 import {
   Button,
-  Card,
   Grid,
   Link,
   List,
   ListItem,
   Typography,
-  CircularProgress,
-  LinearProgress,
 } from '@material-ui/core';
 
 const ProductScreen = () => {
