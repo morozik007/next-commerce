@@ -13,9 +13,11 @@ import {
   List,
   ListItem,
   Typography,
+  CircularProgress,
+  LinearProgress,
 } from '@material-ui/core';
 
-function ProductScreen() {
+const ProductScreen = () => {
   const classes = useStyles();
   const route = useRouter();
   const { slug } = route.query;
@@ -23,6 +25,10 @@ function ProductScreen() {
   if (!product) {
     return <div>Product Not found</div>;
   }
+
+  // const myLoader = ({ src, width, quality }) => {
+  //   return `https://example.com/${src}?w=${width}&q=${quality || 75}`;
+  // };
   return (
     <Layout title={product.name} description={product.description}>
       <div className={classes.section}>
@@ -35,6 +41,7 @@ function ProductScreen() {
       <Grid container spacing={1}>
         <Grid item md={6} xs={12}>
           <Image
+            //loader={myLoader()}
             src={product.image}
             alt={product.name}
             width={640}
@@ -45,7 +52,7 @@ function ProductScreen() {
         <Grid item md={6} xs={12}>
           <List>
             <ListItem>
-              <Typography variant="h5" component="h1">
+              <Typography variant="h1" component="h1">
                 {product.name}
               </Typography>
             </ListItem>
@@ -63,48 +70,24 @@ function ProductScreen() {
             <ListItem>
               <Typography>Description: {product.description}</Typography>
             </ListItem>
+            <ListItem>
+              <Typography>Price: ${product.price}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>
+                Status: {product.countInStock > 0 ? 'In stock' : 'Unavailable'}
+              </Typography>
+            </ListItem>
+            <ListItem>
+              <Button variant="contained" color="primary">
+                Add to cart
+              </Button>
+            </ListItem>
           </List>
-          <Grid container>
-            <Grid item md={6} xs={12}>
-              <Card>
-                <List>
-                  <ListItem>
-                    <Grid container>
-                      <Grid item xs={6}>
-                        <Typography>Price</Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography>${product.price}</Typography>
-                      </Grid>
-                    </Grid>
-                  </ListItem>
-                  <ListItem>
-                    <Grid container>
-                      <Grid item xs={6}>
-                        <Typography>Status</Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography>
-                          {product.countInStock > 0
-                            ? 'In stock'
-                            : 'Unavailable'}
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                  </ListItem>
-                  <ListItem>
-                    <Button fullWidth variant="contained" color="primary">
-                      Add to cart
-                    </Button>
-                  </ListItem>
-                </List>
-              </Card>
-            </Grid>
-          </Grid>
         </Grid>
       </Grid>
     </Layout>
   );
-}
+};
 
 export default ProductScreen;

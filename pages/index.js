@@ -12,7 +12,7 @@ import {
 import NextLink from 'next/link';
 import data from '../utils/data';
 
-export default function Home() {
+const Home = () => {
   return (
     <Layout>
       <h1>Products</h1>
@@ -31,9 +31,7 @@ export default function Home() {
               </NextLink>
               <CardContent>
                 <Typography variant="h6">{product.name}</Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {product.description}
-                </Typography>
+                <Typography variant="body1">{product.description}</Typography>
               </CardContent>
               <CardActions>
                 <Typography>${product.price}</Typography>
@@ -47,4 +45,6 @@ export default function Home() {
       </Grid>
     </Layout>
   );
-}
+};
+
+export default Home;
