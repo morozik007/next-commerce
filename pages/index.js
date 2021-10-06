@@ -3,8 +3,8 @@ import {
   Button,
   Card,
   CardActionArea,
-  CardActions,
   CardContent,
+  CardActions,
   CardMedia,
   Grid,
   Typography,
@@ -12,6 +12,7 @@ import {
 import NextLink from 'next/link';
 import db from '../utils/db';
 import Product from '../models/Product';
+import { Rating } from '@mui/material';
 
 const Home = (props) => {
   // props get from getServerSideProps()
@@ -35,6 +36,19 @@ const Home = (props) => {
               <CardContent>
                 <Typography variant="h6">{product.name}</Typography>
                 <Typography variant="body1">{product.description}</Typography>
+                <Typography>
+                  <Rating
+                    sx={{
+                      marginTop: '6px',
+                      marginLeft: '-3px',
+                    }}
+                    name="read-only"
+                    value={product.rating}
+                    precision={0.5}
+                    size="small"
+                    readOnly
+                  />
+                </Typography>
               </CardContent>
               <CardActions>
                 <Typography>${product.price}</Typography>

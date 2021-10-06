@@ -14,7 +14,7 @@ import {
   ListItem,
   Typography,
 } from '@material-ui/core';
-import { Alert } from '@mui/material';
+import { Alert, Rating } from '@mui/material';
 
 const ProductScreen = (props) => {
   const { dispatch } = useContext(Store);
@@ -69,7 +69,19 @@ const ProductScreen = (props) => {
             </ListItem>
             <ListItem>
               <Typography>
-                Rating: {product.rating} stars ({product.numReviews} reviews)
+                Rating:{' '}
+                <Rating
+                  sx={{
+                    top: '4px',
+                    marginRight: '10px',
+                  }}
+                  name="read-only"
+                  value={product.rating}
+                  precision={0.5}
+                  size="small"
+                  readOnly
+                />
+                ({product.numReviews} reviews)
               </Typography>
             </ListItem>
             <ListItem>
