@@ -16,7 +16,7 @@ import {
 
 const ProductScreen = (props) => {
   const { product } = props;
-  console.log(product);
+  //console.log(product);
   const classes = useStyles();
   // const route = useRouter();
   // const { slug } = route.query;
@@ -25,9 +25,6 @@ const ProductScreen = (props) => {
     return <div>Product Not found</div>;
   }
 
-  // const myLoader = ({ src, width, quality }) => {
-  //   return `https://example.com/${src}?w=${width}&q=${quality || 75}`;
-  // };
   return (
     <Layout title={product.name} description={product.description}>
       <div className={classes.section}>
@@ -40,7 +37,6 @@ const ProductScreen = (props) => {
       <Grid container spacing={1}>
         <Grid item md={6} xs={12}>
           <Image
-            //loader={myLoader()}
             src={product.image}
             alt={product.name}
             width={640}

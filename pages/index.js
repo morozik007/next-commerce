@@ -15,8 +15,8 @@ import Product from '../models/Product';
 
 const Home = (props) => {
   // props get from getServerSideProps()
-  console.log(props);
   const { products } = props;
+
   return (
     <Layout>
       <h1>Products</h1>
@@ -63,3 +63,13 @@ export async function getServerSideProps() {
     },
   };
 }
+
+// export async function getServerSideProps() {
+//   const response = await fetch(`http://localhost:3000/api/products`);
+//   const products = await response.json();
+//   return {
+//     props: {
+//       products: { products },
+//     },
+//   };
+// }
