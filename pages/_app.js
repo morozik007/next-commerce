@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import { useEffect } from 'react';
 import { StoreProvider } from '../utils/Store';
+import NextNProgress from 'nextjs-progressbar';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -11,6 +12,13 @@ function MyApp({ Component, pageProps }) {
   }, []);
   return (
     <StoreProvider>
+      <NextNProgress
+        color="#29D"
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={3}
+        showOnShallow={true}
+      />
       <Component {...pageProps} />
     </StoreProvider>
   );

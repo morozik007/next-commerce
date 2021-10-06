@@ -16,7 +16,6 @@ import Product from '../models/Product';
 const Home = (props) => {
   // props get from getServerSideProps()
   const { products } = props;
-
   return (
     <Layout>
       <h1>Products</h1>
