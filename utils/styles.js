@@ -5,7 +5,7 @@ const useStyles = makeStyles({
     backgroundColor: '#203040',
     '& a': {
       color: '#fff',
-      marginLeft: 10,
+      marginLeft: 20,
       textDecoration: 'underline',
       '&:first-child': {
         marginLeft: 0,

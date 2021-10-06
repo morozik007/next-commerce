@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import NextLink from 'next/link';
 import Image from 'next/image';
 import Layout from '../../components/Layout';
 import db from '../../utils/db';
 import useStyles from '../../utils/styles';
 import Product from '../../models/Product';
+import { Store } from '../../utils/Store';
 import {
   Button,
   Grid,
@@ -13,10 +14,11 @@ import {
   ListItem,
   Typography,
 } from '@material-ui/core';
+import { Alert } from '@mui/material';
 
 const ProductScreen = (props) => {
+  const { dispatch } = useContext(Store);
   const { product } = props;
-  //console.log(product);
   const classes = useStyles();
   // const route = useRouter();
   // const { slug } = route.query;
@@ -24,6 +26,14 @@ const ProductScreen = (props) => {
   if (!product) {
     return <div>Product Not found</div>;
   }
+
+  const addToCartHandler = () => {
+    if (product.countInStock <= 0) {
+      window.alert('Sorry. Product is out of stock');
+      return;
+    }
+    dispatch({ type: 'ADD_TO_CART', payload: { ...product, quantity: 1 } });
+  };
 
   return (
     <Layout title={product.name} description={product.description}>
@@ -69,12 +79,17 @@ const ProductScreen = (props) => {
               <Typography>Price: ${product.price}</Typography>
             </ListItem>
             <ListItem>
-              <Typography>
-                Status: {product.countInStock > 0 ? 'In stock' : 'Unavailable'}
-              </Typography>
+              <Alert severity={product.countInStock > 0 ? 'success' : 'error'}>
+                {product.countInStock > 0 ? 'In stock' : 'Out of stock'}
+              </Alert>
             </ListItem>
             <ListItem>
-              <Button variant="contained" color="primary">
+              <Button
+                variant="contained"
+                color="primary"
+                disabled={product.countInStock > 0 ? false : true}
+                onClick={addToCartHandler}
+              >
                 Add to cart
               </Button>
             </ListItem>

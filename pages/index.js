@@ -38,7 +38,11 @@ const Home = (props) => {
               </CardContent>
               <CardActions>
                 <Typography>${product.price}</Typography>
-                <Button size="small" color="primary">
+                <Button
+                  size="small"
+                  color="primary"
+                  disabled={product.countInStock > 0 ? false : true}
+                >
                   Add to cart
                 </Button>
               </CardActions>
