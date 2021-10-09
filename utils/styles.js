@@ -20,12 +20,20 @@ const useStyles = makeStyles({
   grow: {
     flexGrow: 1,
   },
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+    //border: 'solid 1px green',
+  },
   main: {
-    minHeight: '80vh',
+    flex: '1 0 auto',
+    //border: 'solid 1px blue',
   },
   footer: {
+    flexShrink: 0,
     textAlign: 'center',
-    borderTop: 'solid 1px red',
+    //borderTop: 'solid 1px red',
     paddingTop: 25,
     paddingBottom: 25,
     marginTop: 30,

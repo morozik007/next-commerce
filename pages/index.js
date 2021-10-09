@@ -7,19 +7,17 @@ import {
   CardActions,
   CardMedia,
   Grid,
-  Typography,
 } from '@material-ui/core';
 import NextLink from 'next/link';
 import db from '../utils/db';
 import Product from '../models/Product';
-import { Rating } from '@mui/material';
+import { Rating, Typography } from '@mui/material';
 
 const Home = (props) => {
   // props get from getServerSideProps()
   const { products } = props;
   return (
-    <Layout>
-      <h1>Products</h1>
+    <Layout pageTitle="Products">
       <Grid container spacing={3}>
         {products.map((product) => (
           <Grid item md={4} key={product.name}>

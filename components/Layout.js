@@ -16,11 +16,12 @@ import { createTheme } from '@material-ui/core/styles';
 import { Store } from '../utils/Store';
 import useStyles from '../utils/styles';
 import Cookies from 'js-cookie';
+import Footer from './Footer';
 
-const Layout = ({ title, description, children }) => {
+const Layout = ({ title, description, pageTitle, children }) => {
   const { state, dispatch } = useContext(Store);
   const { darkMode, cart } = state;
-  //console.log(cart);
+  //console.log(state);
   const theme = createTheme({
     typography: {
       h1: {
@@ -53,44 +54,49 @@ const Layout = ({ title, description, children }) => {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AppBar position="static" className={classes.navbar}>
-          <Toolbar>
-            <NextLink href="/" passHref>
-              <Link underline="none">
-                <Typography className={classes.logo}>Next Commerce</Typography>
-              </Link>
-            </NextLink>
-            <div className={classes.grow}></div>
-            <Switch
-              checked={darkMode}
-              onChange={darkModeChangeHandler}
-              inputProps={{ 'aria-label': 'controlled' }}
-            ></Switch>
-            <NextLink href="/cart" passHref>
-              <Link>
-                <Typography component="span">
-                  {cart.cartItems.length > 0 ? (
-                    <Badge
-                      color="secondary"
-                      badgeContent={cart.cartItems.length}
-                    >
-                      Cart
-                    </Badge>
-                  ) : (
-                    'Cart'
-                  )}
-                </Typography>
-              </Link>
-            </NextLink>
-            <NextLink href="/login" passHref>
-              <Link>Login</Link>
-            </NextLink>
-          </Toolbar>
-        </AppBar>
-        <Container className={classes.main}>{children}</Container>
-        <footer className={classes.footer}>
-          <Typography>@ by Morozik</Typography>
-        </footer>
+        <div className={classes.root}>
+          <AppBar position="static" className={classes.navbar}>
+            <Toolbar>
+              <NextLink href="/" passHref>
+                <Link underline="none">
+                  <Typography className={classes.logo}>
+                    Next Commerce
+                  </Typography>
+                </Link>
+              </NextLink>
+              <div className={classes.grow}></div>
+              <Switch
+                checked={darkMode}
+                onChange={darkModeChangeHandler}
+                inputProps={{ 'aria-label': 'controlled' }}
+              ></Switch>
+              <NextLink href="/cart" passHref>
+                <Link>
+                  <Typography component="span">
+                    {cart.cartItems.length > 0 ? (
+                      <Badge
+                        color="secondary"
+                        badgeContent={cart.cartItems.length}
+                      >
+                        Cart
+                      </Badge>
+                    ) : (
+                      'Cart'
+                    )}
+                  </Typography>
+                </Link>
+              </NextLink>
+              <NextLink href="/login" passHref>
+                <Link>Login</Link>
+              </NextLink>
+            </Toolbar>
+          </AppBar>
+          <Container className={classes.main}>
+            <h1>{pageTitle}</h1>
+            {children}
+          </Container>
+          <Footer className={classes.footer} />
+        </div>
       </ThemeProvider>
     </div>
   );
