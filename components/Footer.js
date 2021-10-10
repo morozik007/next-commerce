@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 import useStyles from '../utils/styles';
 import React from 'react';
 
@@ -6,7 +6,9 @@ function Footer() {
   const classes = useStyles();
   return (
     <footer className={classes.footer}>
-      <Typography>@ by Morozik</Typography>
+      <Container>
+        <Typography>@ by Morozik 2021</Typography>
+      </Container>
     </footer>
   );
 }
